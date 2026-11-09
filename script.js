@@ -1,4 +1,4 @@
-/* =========================================================
+ * =========================================================
    PERSONALIZACIÓN RÁPIDA
    Cambia los textos, enlaces, fotografías y canción aquí.
    Las imágenes de Peanuts se cargan desde sus sitios de origen.
@@ -7,30 +7,30 @@ const CONFIG = {
   // Portada
   coverTitle: "Te amo mi amor!!!",
   coverSubtitle: "Este sitio web es solo para ti",
-
+ 
   // Pantalla de bienvenida: candado, contador y confeti.
   // enabled: false la desactiva · age: edad final · lockTaps: toques para abrir el candado
   intro: { enabled: true, age: 17, lockTaps: 7 },
-
+ 
   // Pantalla "Regalos para ti": Snoopy (poema), regalo (carta), globo (frases).
   // Separa los párrafos y estrofas con una línea en blanco (\n\n).
   giftPoemTitle: "Para ti, mi amor",
   giftPoem: "Hoy el cielo se vistió de fiesta\nporque llegaste al mundo, mi amor,\ny desde entonces mis días tienen\nun poquito más de luz y color.\n\nTu risa es mi canción favorita,\ntu abrazo, mi lugar ideal;\ncontigo hasta lo más sencillo\nse vuelve especial.\n\nQue este nuevo año te abrace\ncon sueños por cumplir,\ny que yo esté a tu lado\npara verte sonreír.\n\nFeliz cumpleaños, mi vida. ♡",
   giftLetter: "Hola Day,\n\nHoy el día ha sido un poco extraño, las nubes parecían seguirme y el sol me hacía querer desear estar muerto, en general fue un día muy detestable.\n\nHasta que llegó la tarde, el atardecer parecía saber tu nombre y el viento cantaba para nosotros, era como si por un momento el día terrible que había tenido cambiara a un día especial, esos días especiales que se quedan impregnados en las memorias y llenan de felicidad al recordarlos.\n\nEn general nuestra tarde juntos fue bella, tú y yo caminando por el zócalo, y sentados en las bancas del zócalo, solo quiero que estos momentos duren más y no se acaben en un cerrar y abrir los ojos, pero no puedo pedir más, ya que cuando mi mano se encuentra con la tuya, se entrelazan tan perfectamente que pienso que nacieron para estar juntas.\n\nAdmito que me sigues poniendo nervioso cuando me miras, con esa mirada que tú solo tienes, es como si tu mirada fuera un tipo de encanto al cual me has embrujado y no pienso querer escapar de este encanto por un largo tiempo.",
   balloonPhrases: ["Te amo", "Eres mi sueño", "Gracias por ti", "Tu sonrisa", "Siempre juntos"],
-
+ 
   // Pantalla 2 · "Te dedico esta canción": reproductor animado con portada, nombre, minutos y volumen.
   // src puede ser el MP4 (suena su audio) o un MP3. La portada es una foto que tú guardas en media/.
   songPlayer: {
-    src: "media/experiencia-religiosa.mp3",
-    cover: "media/dayana.jpg",
+    src: "experiencia-religiosa.mp3",
+    cover: "dayana.jpg",
     title: "Experiencia religiosa",
     artist: "Enrique Iglesias"
   },
-
+ 
   // Pantalla 3 · regalo "Una canción" (Woodstock): solo suena el MP3.
-  giftSong: { src: "media/cancion.mp3", title: "Una canción para ti" },
-
+  giftSong: { src: "cancion.mp3", title: "Una canción para ti" },
+ 
   // Cuenta regresiva de 5 días con fechas reales (hora del dispositivo, "AAAA-MM-DDTHH:MM:SS").
   // stages: una sorpresa por día, en orden. Cada día muestra solo la suya.
   //   kind "letter"  → cartita con explosión de corazones
@@ -67,18 +67,18 @@ const CONFIG = {
     ]
   },
   songDedication: "Quiero dedicarte esta canción porque, de alguna manera, cada nota me recuerda a ti. Gracias por llenar mis días de alegría y por hacer que hasta los momentos más sencillos se vuelvan especiales.",
-
+ 
   // Galería de recuerdos (máximo 6 fotos). Las fotos están en la carpeta media/.
   // Para cambiar una, reemplaza el archivo o cambia su ruta; caption es el texto debajo de la foto.
   photos: [
-    { src: "media/day11.jpg", alt: "Un recuerdo juntos", caption: "Mi lugar favorito" },
-    { src: "media/dayis2.jpg", alt: "Un momento de cariño", caption: "Tú y yo" },
-    { src: "media/day6_1.jpg", alt: "Un abrazo", caption: "Ganamos juntos" },
-    { src: "media/day1.jpg", alt: "De la mano", caption: "De la mano, siempre" },
-    { src: "media/day7.jpg", alt: "Un recuerdo con corazón", caption: "Mi amor, mi todo" },
-    { src: "media/day9.jpg", alt: "Un momento feliz", caption: "Siempre ganamos" }
+    { src: "day11.jpg", alt: "Un recuerdo juntos", caption: "Mi lugar favorito" },
+    { src: "dayis2.jpg", alt: "Un momento de cariño", caption: "Tú y yo" },
+    { src: "day6.jpg", alt: "Un abrazo", caption: "Ganamos juntos" },
+    { src: "day1.jpg", alt: "De la mano", caption: "De la mano, siempre" },
+    { src: "day7.jpg", alt: "Un recuerdo con corazón", caption: "Mi amor, mi todo" },
+    { src: "day9.jpg", alt: "Un momento feliz", caption: "Siempre ganamos" }
   ],
-
+ 
   // Mensajes de la pantalla de flores.
   flowerMessages: [
     "Tu sonrisa es de mis lugares favoritos.",
@@ -88,7 +88,7 @@ const CONFIG = {
     "Te elegiría una y mil veces.",
     "Deseo que la vida te regale tanta alegría como tú das."
   ],
-
+ 
   // Carta de cumpleaños: modifica el nombre y el contenido a tu gusto.
   finalTitle: "Feliz cumpleaños",
   finalSubtitle: "mi bella novia",
@@ -107,7 +107,7 @@ const CONFIG = {
   letterClosing: "Te amo muchísimo. Feliz cumpleaños, mi vida.",
   letterSignature: "Con cariño, siempre."
 };
-
+ 
 const slides = Array.from(document.querySelectorAll(".slide"));
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -116,14 +116,14 @@ const dots = Array.from(document.querySelectorAll(".progress-dot"));
 let currentSlide = 0;
 let navigationLocked = false;
 let typewriterRun = 0;
-
+ 
 const sleep = (ms) => new Promise(resolve => window.setTimeout(resolve, ms));
-
+ 
 function setText(id, value) {
   const element = document.getElementById(id);
   if (element && typeof value === "string") element.textContent = value;
 }
-
+ 
 function applyPersonalization() {
   setText("coverTitle", CONFIG.coverTitle);
   setText("coverSubtitle", CONFIG.coverSubtitle);
@@ -144,10 +144,10 @@ function applyPersonalization() {
   document.querySelectorAll(".love-note p").forEach((paragraph, index) => {
     if (CONFIG.flowerMessages[index]) paragraph.textContent = CONFIG.flowerMessages[index];
   });
-
+ 
   renderPhotoGallery();
 }
-
+ 
 function renderPhotoGallery() {
   const wall = document.getElementById("photoWall");
   if (!wall) return;
@@ -156,7 +156,7 @@ function renderPhotoGallery() {
     const figure = document.createElement("figure");
     figure.className = "polaroid reveal";
     figure.dataset.reveal = index % 2 === 0 ? "left" : "right";
-
+ 
     const image = document.createElement("img");
     image.src = photo.src;
     image.alt = photo.alt || `Fotografía de recuerdo ${index + 1}`;
@@ -172,14 +172,14 @@ function renderPhotoGallery() {
       fallback.innerHTML = "<span>♡</span><small>Un recuerdo por guardar</small>";
       figure.insertBefore(fallback, figure.querySelector("figcaption"));
     }, { once: true });
-
+ 
     const caption = document.createElement("figcaption");
     caption.textContent = photo.caption || "Un recuerdo bonito";
     figure.append(image, caption);
     wall.appendChild(figure);
   });
 }
-
+ 
 function updateNavigation() {
   prevBtn.disabled = currentSlide === 0;
   prevBtn.style.visibility = currentSlide === 0 ? "hidden" : "visible";
@@ -192,7 +192,7 @@ function updateNavigation() {
     dot.setAttribute("aria-current", index === currentSlide ? "step" : "false");
   });
 }
-
+ 
 async function revealSlide(slide) {
   typewriterRun += 1;
   const runId = typewriterRun;
@@ -209,7 +209,7 @@ async function revealSlide(slide) {
     .sort((a, b) => a.order - b.order || a.index - b.index)
     .map(item => item.element);
   elements.forEach(element => element.classList.remove("is-visible"));
-
+ 
   // Los elementos aparecen en el orden del documento; cada pantalla tiene
   // así su propia coreografía y no se adelantan objetos de otras pantallas.
   for (const element of elements) {
@@ -232,11 +232,11 @@ async function revealSlide(slide) {
   }
   if (runId === typewriterRun) navigation.classList.add("is-ready");
 }
-
+ 
 async function goToSlide(targetIndex) {
   if (navigationLocked) return;
   if (targetIndex < 0 || targetIndex >= slides.length || targetIndex === currentSlide) return;
-
+ 
   navigationLocked = true;
   document.getElementById("songAudio").pause();
   const outgoing = slides[currentSlide];
@@ -245,11 +245,11 @@ async function goToSlide(targetIndex) {
   outgoing.classList.add("is-leaving");
   outgoing.classList.remove("is-active");
   outgoing.setAttribute("aria-hidden", "true");
-
+ 
   await sleep(430);
   outgoing.hidden = true;
   outgoing.classList.remove("is-leaving");
-
+ 
   incoming.hidden = false;
   // Forzar reflujo para que la transición de entrada se dispare siempre.
   void incoming.offsetHeight;
@@ -257,26 +257,26 @@ async function goToSlide(targetIndex) {
   incoming.setAttribute("aria-hidden", "false");
   currentSlide = targetIndex;
   updateNavigation();
-
+ 
   // Volver al inicio de la nueva pantalla, sin arrastrar el scroll anterior.
   incoming.scrollTop = 0;
   navigationLocked = false;
   revealSlide(incoming);
 }
-
+ 
 prevBtn.addEventListener("click", () => goToSlide(currentSlide - 1));
 nextBtn.addEventListener("click", () => {
   if (currentSlide === slides.length - 1) goToSlide(0);
   else goToSlide(currentSlide + 1);
 });
 dots.forEach(dot => dot.addEventListener("click", () => goToSlide(Number(dot.dataset.go))));
-
+ 
 document.addEventListener("keydown", event => {
   if (document.body.matches(".is-intro, .has-modal")) return;
   if (event.key === "ArrowRight" && currentSlide < slides.length - 1) goToSlide(currentSlide + 1);
   if (event.key === "ArrowLeft" && currentSlide > 0) goToSlide(currentSlide - 1);
 });
-
+ 
 /* Reproductor animado de la pantalla 2: portada que gira, minutos, progreso y volumen */
 (function setupSongPlayer() {
   const C = CONFIG.songPlayer || {}, g = id => document.getElementById(id);
@@ -295,7 +295,7 @@ document.addEventListener("keydown", event => {
   ["timeupdate", "loadedmetadata", "durationchange"].forEach(ev => a.addEventListener(ev, paint));
   a.addEventListener("play", () => { player.classList.add("is-playing"); g("spPlay").setAttribute("aria-label", "Pausar"); });
   a.addEventListener("pause", () => { player.classList.remove("is-playing"); g("spPlay").setAttribute("aria-label", "Reproducir"); });
-  a.addEventListener("error", () => { g("spMsg").textContent = `No encontré el audio. Guárdalo como ${C.src || "media/experiencia-religiosa.mp3"}`; });
+  a.addEventListener("error", () => { g("spMsg").textContent = `No encontré el audio. Guárdalo como ${C.src || "experiencia-religiosa.mp3"}`; });
   g("spPlay").addEventListener("click", () => { if (a.paused) a.play().catch(() => {}); else a.pause(); });
   bar.addEventListener("input", () => { seeking = true; if (a.duration) a.currentTime = bar.value / 1000 * a.duration; paint(); });
   bar.addEventListener("change", () => { seeking = false; });
@@ -304,7 +304,7 @@ document.addEventListener("keydown", event => {
   g("spMute").addEventListener("click", () => { a.muted = !a.muted; });
   a.addEventListener("volumechange", () => player.classList.toggle("is-muted", a.muted || a.volume === 0));
 })();
-
+ 
 /* Apagar las velitas con el botón o tocando el pastel. */
 function blowCandles() {
   const cake = document.getElementById("birthdayCake");
@@ -317,7 +317,7 @@ function blowCandles() {
 }
 document.getElementById("birthdayCake").addEventListener("click", blowCandles);
 document.getElementById("blowCandlesBtn").addEventListener("click", blowCandles);
-
+ 
 /* =========================================================
    PANTALLA DE BIENVENIDA: candado → contador → confeti
    ========================================================= */
@@ -326,7 +326,7 @@ const $ = id => document.getElementById(id);
 const buzz = pattern => { try { navigator.vibrate && navigator.vibrate(pattern); } catch (_) {} };
 const LOCK_HINTS = ["Toca el candado para abrirlo", "¡Eso es! Sigue tocando", "Se está aflojando…", "¡Más fuerte!", "Ya casi…", "¡Un poquito más!", "¡Una última vez!"];
 const CONFETTI_COLORS = ["#e66d70", "#f5cbd0", "#eea4ad", "#d94b55", "#ffc24c", "#fff3e9", "#a93246", "#9fd3b5", "#c9b6e4"];
-
+ 
 const confetti = (() => {
   const canvas = $("confetti"), ctx = canvas.getContext("2d");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -373,7 +373,7 @@ const confetti = (() => {
     cannons: () => { add(0, h, 70, .9, -1.1, 17); add(w, h, 70, .9, -Math.PI + 1.1, 17); }
   };
 })();
-
+ 
 function popHearts(x, y, n, far, glyph = "♥") {
   for (let i = 0; i < n; i++) {
     const s = document.createElement("span");
@@ -383,7 +383,7 @@ function popHearts(x, y, n, far, glyph = "♥") {
     s.addEventListener("animationend", () => s.remove());
   }
 }
-
+ 
 async function startIntro() {
   const intro = $("intro");
   if (!INTRO.enabled) {
@@ -394,7 +394,7 @@ async function startIntro() {
   }
   const locked = [document.querySelector(".presentation"), document.querySelector(".presentation-nav")];
   locked.forEach(el => { el.inert = true; });
-
+ 
   // 1) Candado: hay que tocarlo varias veces
   const pad = $("padlock"), hearts = $("lockHearts"), hint = $("lockHint");
   hearts.innerHTML = "<span>♥</span>".repeat(INTRO.lockTaps);
@@ -418,7 +418,7 @@ async function startIntro() {
       setTimeout(done, 1000);
     }
   }));
-
+ 
   // 2) Contador: 1, 2, 3… hasta la edad anterior, luego +1
   $("stageLock").classList.add("is-hidden");
   await sleep(450);
@@ -436,7 +436,7 @@ async function startIntro() {
   chip.style.setProperty("--my", `${b.top + b.height / 2 - (c.top + c.height / 2)}px`);
   chip.classList.add("is-merge");
   await sleep(380);
-
+ 
   // 3) Explosión de confeti y entrada a la página
   setNum(INTRO.age, "is-big");
   badge.classList.add("is-done");
@@ -455,7 +455,7 @@ async function startIntro() {
   await sleep(450);
   intro.remove();
 }
-
+ 
 /* Móvil: precarga las imágenes mientras dura la bienvenida, para que las pantallas aparezcan al instante. */
 function preloadImages() {
   const seen = new Set();
@@ -463,7 +463,7 @@ function preloadImages() {
   seen.forEach(src => { new Image().src = src; });
   CONFIG.photos.forEach(p => { const i = new Image(); i.referrerPolicy = "no-referrer"; i.src = p.src; });
 }
-
+ 
 /* Móvil: deslizar a los lados cambia de pantalla. */
 let swipe = null;
 document.addEventListener("touchstart", e => {
@@ -479,7 +479,7 @@ document.addEventListener("touchend", e => {
   if (dx < 0 && currentSlide < slides.length - 1 && document.querySelector(".presentation-nav.is-ready")) goToSlide(currentSlide + 1);
   else if (dx > 0 && currentSlide > 0) goToSlide(currentSlide - 1);
 }, { passive: true });
-
+ 
 /* Respaldo de ilustraciones: si una imagen remota no carga (hotlinking bloqueado) o trae
    fondo cuadriculado, se dibuja una ilustración propia. Para usar tus imágenes, guárdalas
    en la carpeta images/ y cambia el src correspondiente en index.html. */
@@ -497,7 +497,7 @@ const ART = {
   heart: { label: "Mucho amor", body: ART_HEART + `<ellipse cx="68" cy="88" rx="8" ry="14" transform="rotate(35 68 88)" fill="#fff" opacity=".5"/>` }
 };
 const ART_MAP = [["5853c4adec0c270fc2f62df9", "snoopy"], ["5853c464ec0c270fc2f62df5", "woodstock"], ["5c8b7899", "gift"], ["5c8b7893", "balloon"], ["5853c4b4", "heart"], ["pngimg.com/uploads/snoopy", "snoopy-heart"], ["snoopy-rosa", "snoopy"]];
-
+ 
 function artFallback(img) {
   if (img.closest(".polaroid")) return;
   const key = img.dataset.art || (ART_MAP.find(([k]) => img.src.includes(k)) || [])[1];
@@ -518,7 +518,7 @@ function artFallback(img) {
 document.addEventListener("error", e => { if (e.target.tagName === "IMG") artFallback(e.target); }, true);
 const sweepImages = () => document.querySelectorAll("img").forEach(img => { if (img.complete && !img.naturalWidth) artFallback(img); });
 sweepImages(); addEventListener("load", sweepImages);
-
+ 
 /* =========================================================
    REGALOS INTERACTIVOS (pantalla 3)
    ========================================================= */
@@ -526,7 +526,7 @@ ART["snoopy-arm"] = { label: "Snoopy", body: ART_SNOOPY + `<path d="M82 138C62 1
 const esc = s => s.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
 const BALLOON_COLORS = ["#e98591", "#d65c6b", "#ef9aa6", "#e0707d", "#f08a92"];
 document.querySelectorAll(".gift-art").forEach(el => { el.innerHTML = `<svg class="art" viewBox="0 0 200 220" aria-hidden="true">${ART[el.dataset.art].body}</svg>`; });
-
+ 
 let giftRun = 0, giftCleanup = null, giftOpener = null;
 const GIFTS = {};
 function setPageLocked(on) {
@@ -552,13 +552,13 @@ function closeGift(silent) {
   modal.hidden = true; $("giftBody").innerHTML = ""; setPageLocked(false);
   if (!silent && giftOpener) giftOpener.focus();
 }
-
+ 
 /* Snoopy → poema */
 GIFTS.poem = body => {
   const stanzas = CONFIG.giftPoem.split("\n\n");
   body.innerHTML = `<article class="gift-sheet"><p class="tiny-kicker">de Snoopy para ti</p><h3 class="hand-title">${esc(CONFIG.giftPoemTitle)}</h3>${stanzas.map((s, i) => `<p class="poem-stanza" style="--i:${i}">${esc(s).replace(/\n/g, "<br>")}</p>`).join("")}</article>`;
 };
-
+ 
 /* Regalo → carta (el sobre se abre y sale la carta) */
 GIFTS.letter = async (body, alive) => {
   const paras = CONFIG.giftLetter.split("\n\n"), last = paras.length - 1;
@@ -568,7 +568,7 @@ GIFTS.letter = async (body, alive) => {
   await sleep(1000); if (!alive()) return;
   $("env").hidden = true; $("ltSheet").hidden = false;
 };
-
+ 
 /* Globo → Snoopy sosteniendo globos que se van soltando, cada uno con una frase */
 GIFTS.balloons = (body, alive) => {
   body.innerHTML = `<div class="bl-stage" id="blStage"><p class="bl-title hand-title">Cada globo lleva un mensaje</p><svg class="bl-snoopy art" viewBox="0 0 200 220" aria-hidden="true">${ART["snoopy-arm"].body}</svg><div class="bl-end" id="blEnd" hidden><p class="hand-title">¡Que tus sueños vuelen alto!</p><button class="pink-button" id="blAgain" type="button">Soltar otra vez</button></div></div>`;
@@ -600,7 +600,7 @@ GIFTS.balloons = (body, alive) => {
   $("blAgain").addEventListener("click", launch);
   launch();
 };
-
+ 
 /* Corazón → late y explota como fuegos artificiales */
 GIFTS.fireworks = async (body, alive) => {
   body.innerHTML = `<canvas class="fw-canvas" id="fwCanvas"></canvas><svg class="fw-heart" id="fwHeart" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 185C18 128 24 52 68 52C88 52 100 68 100 80C100 68 112 52 132 52C176 52 182 128 100 185Z" fill="#ff5a78"/><ellipse cx="62" cy="84" rx="9" ry="16" transform="rotate(35 62 84)" fill="#fff" opacity=".45"/></svg><p class="fw-text hand-title" id="fwText" hidden>¡Feliz cumpleaños, mi amor!</p>`;
@@ -653,7 +653,7 @@ GIFTS.fireworks = async (body, alive) => {
   frame();
   canvas.addEventListener("pointerdown", e => { explode(e.clientX, e.clientY, randomKind()); buzz(8); });
   giftCleanup = () => { on = false; cancelAnimationFrame(raf); removeEventListener("resize", resize); };
-
+ 
   await sleep(2700); if (!alive()) return;            // el corazón late 3 veces
   const heart = $("fwHeart"), b = heart.getBoundingClientRect();
   heart.classList.add("is-boom"); buzz([40, 30, 90]);
@@ -663,20 +663,20 @@ GIFTS.fireworks = async (body, alive) => {
   $("fwText").hidden = false;
   while (alive()) { launch(); await sleep(900 + Math.random() * 900); }
 };
-
+ 
 /* Woodstock → tu canción (MP3), sin letra: solo suena */
 GIFTS.music = (body, alive) => {
   const S = CONFIG.giftSong || {};
   body.innerHTML = `<article class="gift-sheet song-sheet" id="giftSheet"><p class="tiny-kicker">de Woodstock para ti</p><h3 class="hand-title">${esc(S.title || "Una canción para ti")}</h3><svg class="song-bird art" viewBox="0 0 200 220" aria-hidden="true">${ART.woodstock.body}</svg><audio id="giftAudio" controls preload="auto"></audio><p class="song-msg" id="giftMsg"></p></article>`;
   const a = $("giftAudio"), sheet = $("giftSheet");
-  a.addEventListener("error", () => { $("giftMsg").textContent = `No encontré el audio. Guárdalo como ${S.src || "media/cancion.mp3"}`; });
+  a.addEventListener("error", () => { $("giftMsg").textContent = `No encontré el audio. Guárdalo como ${S.src || "cancion.mp3"}`; });
   a.addEventListener("play", () => sheet.classList.add("is-playing"));
   a.addEventListener("pause", () => sheet.classList.remove("is-playing"));
   a.src = S.src || "";
   giftCleanup = () => { a.pause(); a.removeAttribute("src"); a.load(); };
   if (alive()) a.play().catch(() => {});
 };
-
+ 
 document.querySelector(".character-row").addEventListener("click", e => {
   const btn = e.target.closest("[data-gift]");
   if (!btn) return;
@@ -684,7 +684,7 @@ document.querySelector(".character-row").addEventListener("click", e => {
 });
 $("giftClose").addEventListener("click", () => closeGift());
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeGift(); });
-
+ 
 /* =========================================================
    CUENTA REGRESIVA DE 3 DÍAS · día 1 carta · día 2 poema · día 3 página original
    ========================================================= */
@@ -735,7 +735,7 @@ const STAGE_KINDS = {
   heart:   { icon: () => ART_HEART_BIG, burst: [heartMaker, 70, 44] },
   poem:    { icon: () => gerberaSVG(GERBERA_COLORS[0]), burst: [flowerMaker, 32, 22] }
 };
-
+ 
 async function startGate() {
   const S = (GATE.stages || []).map(s => ({ ...s, t: new Date(s.date).getTime() }));
   const U = new Date(GATE.unlock).getTime();
@@ -748,7 +748,7 @@ async function startGate() {
   const noteFor = ph => ph === 0 ? `Tu primera sorpresa se abre el ${day(S[0].t)} ♡`
     : ph < S.length ? `La siguiente sorpresa llega el ${day(S[ph].t)} ♡` : `Y el ${full(U)} te espera lo mejor ♡`;
   intro.inert = true; gate.hidden = false;
-
+ 
   function addCard(stage, silent) {
     const K = STAGE_KINDS[stage.kind] || STAGE_KINDS.letter;
     const card = document.createElement("article");
@@ -783,14 +783,14 @@ async function startGate() {
     cards.prepend(card);
     if (!silent) setTimeout(boom, 650);
   }
-
+ 
   // Muestra la sorpresa de un día; los botones solo existen para los días que ya se abrieron
   function showDay(n, withBurst) {
     cards.innerHTML = ""; addCard(S[n - 1], !withBurst);
     tabs.querySelectorAll("button").forEach(b => { const on = Number(b.dataset.day) === n; b.classList.toggle("is-on", on); b.setAttribute("aria-pressed", on); });
   }
   tabs.addEventListener("click", e => { const b = e.target.closest("[data-day]"); if (b) showDay(Number(b.dataset.day), false); });
-
+ 
   let phase = -1, timer = 0, finish;
   const tick = () => {
     const t = Date.now(), s = Math.max(0, Math.floor((U - t) / 1000));
@@ -805,20 +805,21 @@ async function startGate() {
     }
     if (s <= 0) finish();
   };
-
+ 
   await new Promise(resolve => {
     finish = () => { clearInterval(timer); resolve(); };
     timer = setInterval(tick, 250); tick();
   });
-
+ 
   explode(innerWidth / 2, innerHeight / 2, 40, Math.min(innerWidth, innerHeight) * .7, heartMaker);
   gate.classList.add("is-leaving");
   await sleep(800);
   gate.remove(); intro.inert = false;
 }
-
+ 
 /* Inicia la bienvenida; la portada se revela cuando termina. */
 applyPersonalization();
 updateNavigation();
 preloadImages();
 startGate().then(startIntro);
+ 
